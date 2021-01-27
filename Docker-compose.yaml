@@ -1,0 +1,36 @@
+version: "3"
+services: 
+  
+  fastapi_app:
+    build: ./fastapi_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbit
+      - celery_worker
+      - redis_container
+
+  rabbit:
+    hostname: rabbit
+    image: "rabbitmq:3-management"
+    environment:
+      - RABBITMQ_DEFAULT_USER=myadmin
+      -  RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  redis_container:
+    hostname: redis_service
+    image: redis:latest
+    ports:
+     - 6379:6379
+
+  celery_worker:
+    build: ./celery_worker
+    depends_on: 
+      - redis_container
+      - rabbit
+
+
+
