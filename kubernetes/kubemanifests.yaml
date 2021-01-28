@@ -87,7 +87,7 @@ items:
             io.kompose.service: celery-worker
         spec:
           containers:
-            - image: celery-worker
+            - image: sharabhs/fastapi_celery_worker
               name: celery-worker
               resources: {}
           restartPolicy: Always
@@ -118,7 +118,7 @@ items:
             io.kompose.service: fastapi-app
         spec:
           containers:
-            - image: fastapi-app
+            - image: sharabhs/fastapi_celery_frontend
               name: fastapi-app
               ports:
                 - containerPort: 8080

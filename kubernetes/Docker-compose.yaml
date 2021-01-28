@@ -2,7 +2,7 @@ version: "3"
 services: 
   
   fastapi_app:
-    build: ./fastapi_app
+    image: sharabhs/fastapi_celery_frontend
     ports:
       - "8080:8080"
     depends_on:
@@ -27,7 +27,7 @@ services:
      - 6379:6379
 
   celery_worker:
-    build: ./celery_worker
+    image: sharabhs/fastapi_celery_worker
     depends_on: 
       - redis_container
       - rabbit
