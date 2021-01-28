@@ -17,7 +17,6 @@ items:
           targetPort: 8080
       selector:
         io.kompose.service: fastapi-app
-      type: LoadBalancer
     status:
       loadBalancer: {}
   - apiVersion: v1
