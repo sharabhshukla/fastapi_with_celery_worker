@@ -17,7 +17,6 @@ items:
           targetPort: 8080
       selector:
         io.kompose.service: fastapi-app
-      type: LoadBalancer
     status:
       loadBalancer: {}
   - apiVersion: v1
@@ -50,15 +49,15 @@ items:
         kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
-        io.kompose.service: redis-container
-      name: redis-container
+        io.kompose.service: redis-service
+      name: redis-service
     spec:
       ports:
         - name: "6379"
           port: 6379
           targetPort: 6379
       selector:
-        io.kompose.service: redis-container
+        io.kompose.service: redis-service
     status:
       loadBalancer: {}
   - apiVersion: apps/v1
@@ -173,13 +172,13 @@ items:
         kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
-        io.kompose.service: redis-container
-      name: redis-container
+        io.kompose.service: redis-service
+      name: redis-service
     spec:
       replicas: 1
       selector:
         matchLabels:
-          io.kompose.service: redis-container
+          io.kompose.service: redis-service
       strategy: {}
       template:
         metadata:
@@ -188,11 +187,11 @@ items:
             kompose.version: 1.22.0 (HEAD)
           creationTimestamp: null
           labels:
-            io.kompose.service: redis-container
+            io.kompose.service: redis-service
         spec:
           containers:
             - image: redis:latest
-              name: redis-container
+              name: redis-service
               ports:
                 - containerPort: 6379
               resources: {}

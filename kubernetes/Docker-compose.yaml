@@ -1,14 +1,14 @@
 version: "3"
 services: 
   
-  fastapi_app:
+  fastapi-app:
     image: sharabhs/fastapi_celery_frontend
     ports:
       - "8080:8080"
     depends_on:
       - rabbit
-      - celery_worker
-      - redis_container
+      - celery-worker
+      - redis-service
 
   rabbit:
     hostname: rabbit
@@ -20,17 +20,14 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  redis_container:
+  redis-service:
     hostname: redis-service
     image: redis:latest
     ports:
      - 6379:6379
 
-  celery_worker:
+  celery-worker:
     image: sharabhs/fastapi_celery_worker
     depends_on: 
-      - redis_container
+      - redis-service
       - rabbit
-
-
-
