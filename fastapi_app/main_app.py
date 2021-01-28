@@ -5,7 +5,7 @@ from celery import Celery
 app = FastAPI()
 api_task_queue = Celery('producer',
                 broker='amqp://myadmin:password@rabbit:5672',
-                backend='redis://redis_service:6379/0')
+                backend='redis://redis-service:6379/0')
 
 
 

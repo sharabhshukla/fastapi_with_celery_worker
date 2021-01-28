@@ -21,7 +21,7 @@ services:
       - "5672:5672"
 
   redis_container:
-    hostname: redis_service
+    hostname: redis-service
     image: redis:latest
     ports:
      - 6379:6379

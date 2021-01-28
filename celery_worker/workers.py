@@ -3,7 +3,7 @@ from celery import Celery
 
 app = Celery('consumer',
             broker='amqp://myadmin:password@rabbit:5672',
-            backend='redis://redis_service:6379/0')
+            backend='redis://redis-service:6379/0')
 
 @app.task
 def add_fn(num1,num2):
