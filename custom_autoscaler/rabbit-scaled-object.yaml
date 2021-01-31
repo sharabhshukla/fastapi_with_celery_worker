@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   scaleTargetRef:
-    name: celery-worker
+    deploymentName: celery-worker
   pollingInterval: 5 # Optional. Default: 30 seconds
   cooldownPeriod: 180 # Optional. Default: 300 seconds
   minReplicaCount: 1 # Optional. Default: 0
@@ -14,7 +14,7 @@ spec:
   - type: rabbitmq
     metadata:
       protocol: amqp
-      queueName: testqueue
-      queueLength: "20"
+      queueName: consumer
+      queueLength: "5"
     authenticationRef:
       name: keda-trigger-auth-rabbitmq-conn
