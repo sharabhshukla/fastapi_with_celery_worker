@@ -13,7 +13,7 @@ spec:
   triggers:
   - type: rabbitmq
     metadata:
-      host: amqp://myadmin:password@rabbit.svc.cluster.local:5672
+      host: amqp://myadmin:password@rabbit.svc.komposecluster.local:5672
       protocol: auto
       queueName: consumer
       queueLength: "5"
