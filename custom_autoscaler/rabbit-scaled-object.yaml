@@ -13,8 +13,7 @@ spec:
   triggers:
   - type: rabbitmq
     metadata:
-      protocol: amqp
+      host: amqp://myadmin:password@rabbit:5672
+      protocol: auto
       queueName: consumer
       queueLength: "5"
-    authenticationRef:
-      name: keda-trigger-auth-rabbitmq-conn
